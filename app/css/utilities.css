@@ -1,3 +1,7 @@
 .font-sans {
   font-family: var(--ff-sans);
 }
+
+.font-nunito {
+  font-family: var(--ff-nunito);
+}

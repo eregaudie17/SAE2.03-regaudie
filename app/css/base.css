@@ -5,3 +5,10 @@
 @import "./utilities.css" layer(utilities);
 
 @import "../component/NavBar/style.css" layer(components);
+@import "../component/Card/style.css" layer(components);
+
+body{
+    font-family: var(--ff-nunito);
+    color: var(--color-text);
+    background: var(--color-bg);
+}
