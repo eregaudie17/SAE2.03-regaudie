@@ -6,7 +6,6 @@ let DataMovie = {};
  /**
      * Fetches data from the server based on the specified day.
      *
-     * @param {string} movie - The week parameter to be sent to the server.
      * @returns The response from the server.
      * 
      * DataMenu.request permet de récupérer des données depuis le serveur.
