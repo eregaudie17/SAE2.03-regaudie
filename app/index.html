@@ -12,45 +12,33 @@
 
     <section id="content"></section>
 
+    <section id="footer"></section>
+
     <script type="module">
-      import { NavBar } from "./component/NavBar/script.js";
-      import { Card } from "./component/Card/script.js";
+      import { DataMovie } from "./data/dataMovie.js";
+      import { Grid } from "./component/Grid/script.js";
 
       // Controleur
       // Rappel, écrire window.C plutôt que let C est nécessaire pour tester depuis la console du navigateur
       // Une fois l'application terminée, on pourrait remettre let C.
       window.C = {};
 
-      C.handlerAbout = function () {
-        alert(
-          "Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance !"
-        );
-      };
+      C.getMovie = async function () {
+        let data = await DataMovie.request()
+        V.renderMovie(data)
+      }
 
-      C.start = function () {
-        //V.renderNavBar("C.handlerAbout()");
-        V.renderCard("Spider-man");
+      C.start = function(){
+        C.getMovie();
+      }
 
-      };
 
       // Vue (contient tout ce qui est relatif à l'affichage)
       window.V = {};
 
-      /**
-       * V.renderNavBar
-       *
-       * Cette fonction est responsable de l'affichage de la barre de navigation (NavBar).
-       * Elle sélectionne l'élément HTML avec l'ID "header" et y insère le contenu
-       * formaté par le composant NavBar.
-       */
-      V.renderNavBar = function (hAbout) {
-        let header = document.querySelector("#header");
-        header.innerHTML = NavBar.format(hAbout);
-      };
-
-      V.renderCard = function (titre) {
+      V.renderMovie = function (data) {
         let content = document.querySelector("#content");
-        content.innerHTML = Card.format(titre)
+        content.innerHTML = Grid.format(data)
       }
 
       C.start(); // Démarre l'application

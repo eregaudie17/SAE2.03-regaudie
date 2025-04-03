@@ -5,7 +5,7 @@
 @import "./utilities.css" layer(utilities);
 
 @import "../component/NavBar/style.css" layer(components);
-@import "../component/Card/style.css" layer(components);
+@import "../component/Grid/style.css" layer(components);
 
 body{
     display: flex;

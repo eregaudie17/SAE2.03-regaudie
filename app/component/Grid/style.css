@@ -19,14 +19,24 @@
 }
 
 .card__imgcont{
-    object-fit: cover;
+    width: 100%;
+    height: 13.5rem;
 }
 
-.card__text{
+.card__img{
+    height: 100%;
     width: 100%;
-    height: fit-content;
+}
+
+
+.card__text{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 3rem;
     padding: 0.25rem;
     text-align: center;
+    justify-content: center;
     background-color: var(--color-dark-blue);
 }
 
