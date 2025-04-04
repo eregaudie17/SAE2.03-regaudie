@@ -11,13 +11,16 @@
   --color-green: hsl(120, 100%, 37%);
 
   --color-dark-blue: hsl(252, 67%, 15%);
+  --color-black-transparent: hsla(252, 71%, 8%, 0.599);
 
   --ff-sans: "DM sans", sans-serif;
   --ff-nunito: "Nunito", sans-serif;
 
   --fs-1: 1rem;
 
+  --fw-500: 500;
   --fw-600: 600;
+  --fw-700: 700;
 
   /* Sementic Tokens */
   --color-fg: var(--color-white);

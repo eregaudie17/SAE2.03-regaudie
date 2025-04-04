@@ -41,6 +41,6 @@ function addMovieController(){
         return "Le film $titre à bien été ajouté.";
     }
     else{
-        return false;
+        return "Le film n'a pas pu être ajouté.";
     }
 }

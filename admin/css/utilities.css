@@ -5,3 +5,7 @@
 .font-mono {
   font-family: Courier, monospace;
 }
+
+.font-nunito{
+  font-family: var(--ff-nunito);
+}

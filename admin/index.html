@@ -7,43 +7,47 @@
     <link rel="stylesheet" href="./css/base.css" />
   </head>
   <body>
-    <section id="log"></section>
+    <img class="logo" src="./assets/Logo AraWatch.png"/>
+    <div class="container" style="--bg:url('../assets/captain-america')" alt="">
 
-    <section id="addMovie"></section>
+      <section id="log"></section>
 
-    <script type="module">
-      import { Log } from "./component/Log/script.js";
-      import { AddMovieForm } from "./component/AddMovieForm/script.js";
+      <section id="addMovie"></section>
 
-      import { DataMovie } from "./data/dataMovie.js";
+      <script type="module">
+        import { Log } from "./component/Log/script.js";
+        import { AddMovieForm } from "./component/AddMovieForm/script.js";
 
-      window.C = {};
+        import { DataMovie } from "./data/dataMovie.js";
 
-      C.handlerUpdate = async function(){
-        let form = document.querySelector('.addMovie__form');
-        let fd = new FormData(form);
-        let res = await DataMovie.add(fd);
-        V.renderLog(res);
-      }
+        window.C = {};
 
-      C.start = function () {
-        V.renderLog("Démarrage de l'application");
-        V.renderAddMovie("C.handlerUpdate()");
-      };
+        C.handlerUpdate = async function(){
+          let form = document.querySelector('.addMovie__form');
+          let fd = new FormData(form);
+          let res = await DataMovie.add(fd);
+          V.renderLog(res);
+        }
 
-      window.V = {};
+        C.start = function () {
+          V.renderLog("Démarrage de l'application");
+          V.renderAddMovie("C.handlerUpdate()");
+        };
 
-      V.renderLog = function (txt) {
-        let content = document.querySelector("#log");
-        content.innerHTML = Log.format(txt);
-      };
+        window.V = {};
 
-      V.renderAddMovie = function(handler){
-        let content = document.querySelector("#addMovie");
-        content.innerHTML = AddMovieForm.format(handler)
-      }
+        V.renderLog = function (txt) {
+          let content = document.querySelector("#log");
+          content.innerHTML = Log.format(txt);
+        };
 
-      C.start();
-    </script>
+        V.renderAddMovie = function(handler){
+          let content = document.querySelector("#addMovie");
+          content.innerHTML = AddMovieForm.format(handler)
+        }
+
+        C.start();
+      </script>
+    </div>
   </body>
 </html>
