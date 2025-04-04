@@ -28,22 +28,22 @@ function getAllMovies(){
     return $res;
 }
 
-function addMovie($t, $r, $a1, $d1, $d2, $c, $a2, $u, $a3){
+function addMovie($n, $y, $l, $d1, $d2, $c, $i, $t, $m){
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
     $sql = "INSERT INTO Movie (name, year, length, description, director, id_categorie, image, trailer, min_age)
             VALUES (:name, :year, :length, :description, :director, :id_categorie, :image, :trailer, :min_age)";
     $stmt = $cnx->prepare($sql);
-    $stmt->bindParam(':name', $t);
-    $stmt->bindParam(':year', $r);
-    $stmt->bindParam(':length', $a1);
+    $stmt->bindParam(':name', $n);
+    $stmt->bindParam(':year', $y);
+    $stmt->bindParam(':length', $l);
     $stmt->bindParam(':description', $d1);
     $stmt->bindParam(':director', $d2);
     $stmt->bindParam(':id_categorie', $c);
-    $stmt->bindParam(':image', $a2);
-    $stmt->bindParam(':trailer', $u);
-    $stmt->bindParam(':min_age', $a3);
+    $stmt->bindParam(':image', $i);
+    $stmt->bindParam(':trailer', $t);
+    $stmt->bindParam(':min_age', $m);
 
     $stmt->execute();
-    $res = stmt->rowCount();
+    $res = $stmt->rowCount();
     return $res;
 }

@@ -26,17 +26,17 @@ function readMoviesController(){
 }
 
 function addMovieController(){
-    $titre = $_REQUEST['titre'];
-    $realisateur = $_REQUEST['realisateur'];
-    $annee = $_REQUEST['annee'];
-    $duree = $_REQUEST['duree'];
+    $titre = $_REQUEST['name'];
+    $annee = $_REQUEST['year'];
+    $duree = $_REQUEST['length'];
     $description = $_REQUEST['description'];
-    $categorie = $_REQUEST['categorie'];
-    $affiche = $_REQUEST['affiche'];
-    $URLtrailer = $_REQUEST['URLtrailer'];
-    $age = $_REQUEST['age'];
+    $realisateur = $_REQUEST['director'];
+    $categorie = $_REQUEST['id_category'];
+    $affiche = $_REQUEST['image'];
+    $URLtrailer = $_REQUEST['trailer'];
+    $age = $_REQUEST['min_age'];
 
-    $ok = addMovie($titre, $realisateur, $annee, $duree, $description, $categorie, $affiche, $URLtrailer, $age);
+    $ok = addMovie($titre, $annee, $duree, $description, $realisateur, $categorie, $affiche, $URLtrailer, $age);
     if ($ok!=0){
         return "Le film $titre à bien été ajouté.";
     }
