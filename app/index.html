@@ -16,7 +16,9 @@
 
     <script type="module">
       import { DataMovie } from "./data/dataMovie.js";
+      import { NavBar } from "./component/NavBar/script.js"
       import { Grid } from "./component/Grid/script.js";
+      import { NoMovie } from "./component/NoMovie/script.js";
 
       // Controleur
       // Rappel, écrire window.C plutôt que let C est nécessaire pour tester depuis la console du navigateur
@@ -25,10 +27,16 @@
 
       C.getMovie = async function () {
         let data = await DataMovie.request()
-        V.renderMovie(data)
+        if(data != 0){
+          V.renderMovie(data)
+        }
+        else{
+          V.renderNoMovie("Aucun titre n'est disponible.", "Veuillez essayer ultérieurement.")
+        }
       }
 
       C.start = function(){
+        V.renderNavBar("../server/images/assets/Logo AraWatch.png", "Home")
         C.getMovie();
       }
 
@@ -36,9 +44,19 @@
       // Vue (contient tout ce qui est relatif à l'affichage)
       window.V = {};
 
+      V.renderNavBar = function (hHome) {
+        let content = document.querySelector("#header");
+        content.innerHTML = NavBar.format(hHome)
+      }
+
       V.renderMovie = function (data) {
         let content = document.querySelector("#content");
         content.innerHTML = Grid.format(data)
+      }
+
+      V.renderNoMovie = function (titre, subtitle) {
+        let content = document.querySelector("#content");
+        content.innerHTML = NoMovie.format(titre, subtitle)
       }
 
       C.start(); // Démarre l'application

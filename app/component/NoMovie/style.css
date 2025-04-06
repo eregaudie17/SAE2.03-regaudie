@@ -1,0 +1,15 @@
+.NoMovie{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20rem;
+}
+
+.NoMovie__title{
+    text-align: center;
+}
+
+.NoMovie__subtitle{
+    text-align: center;
+}

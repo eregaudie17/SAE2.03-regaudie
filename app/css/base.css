@@ -6,6 +6,7 @@
 
 @import "../component/NavBar/style.css" layer(components);
 @import "../component/Grid/style.css" layer(components);
+@import "../component/NoMovie/style.css" layer(components);
 
 body{
     display: flex;
@@ -14,4 +15,8 @@ body{
     font-family: var(--ff-nunito);
     color: var(--color-text);
     background: var(--color-bg);
+}
+
+header{
+    width: 100%;
 }

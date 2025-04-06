@@ -20,7 +20,7 @@ body{
     padding: 7rem 10rem;
     background-size: cover;
     background-repeat: no-repeat;
-    background: linear-gradient(hsla(252, 71%, 8%, 0.600), hsla(252, 71%, 8%, 0.600)), var(--bg);
+    background: linear-gradient(hsla(252, 71%, 8%, 0.600), hsla(252, 71%, 8%, 0.600)), url("../../server/images/assets/captain-america.jpg");
 }
 
 .logo{
