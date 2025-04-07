@@ -41,8 +41,12 @@
         V.renderMovieDetail(data)
       }
 
+      C.handlerHome = async function(){
+        C.getMovie();
+      }
+
       C.start = function(){
-        V.renderNavBar("../server/images/assets/Logo AraWatch.png", "Home")
+        V.renderNavBar("../server/images/assets/Logo AraWatch.png", "C.handlerHome()")
         C.getMovie();
       }
 
@@ -50,9 +54,9 @@
       // Vue (contient tout ce qui est relatif à l'affichage)
       window.V = {};
 
-      V.renderNavBar = function (hHome) {
+      V.renderNavBar = function (logo, hHome) {
         let content = document.querySelector("#header");
-        content.innerHTML = NavBar.format(hHome)
+        content.innerHTML = NavBar.format(logo, hHome)
       }
 
       V.renderMovie = function (data) {

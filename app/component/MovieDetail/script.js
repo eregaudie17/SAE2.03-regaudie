@@ -3,20 +3,24 @@ const template = await templateFile.text();
 
 let MovieDetail = {};
 
-MovieDetail.format = function (movie) {
-  let html = template;
+MovieDetail.format = function (movies) {
+    let html = "";
+    movies.forEach((movie) => {
+        let movieHtml = template;
+        movieHtml = movieHtml.replace("{{image}}", movie.image);
+        movieHtml = movieHtml.replace("{{name}}", movie.name);
+        movieHtml = movieHtml.replace("{{director}}", movie.director);
+        movieHtml = movieHtml.replace("{{year}}", movie.year);
+        movieHtml = movieHtml.replace("{{category}}", movie.category);
+        movieHtml = movieHtml.replace("{{min_age}}", movie.min_age);
+        movieHtml = movieHtml.replace("{{length}}", movie.length);
+        movieHtml = movieHtml.replace("{{description}}", movie.description);
+        movieHtml = movieHtml.replace("{{trailer}}", movie.trailer);
+        html += movieHtml;
+      });
   
-  html = html.replace("{{image}}", movie.image);
-  html = html.replace("{{titre}}", movie.name);
-  html = html.replace("{{realisateur}}", movie.director);
-  html = html.replace("{{annee}}", movie.year);
-  html = html.replace("{{categorie}}", movie.category);
-  html = html.replace("{{age}}", movie.min_age);
-  html = html.replace("{{duree}}", movie.length);
-  html = html.replace("{{description}}", movie.description);
-  html = html.replace("{{trailer}}", movie.trailer);
-
-  return html;
-};
+    return html;
+  };
 
 export {MovieDetail};
+    
