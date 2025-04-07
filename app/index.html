@@ -19,6 +19,7 @@
       import { NavBar } from "./component/NavBar/script.js"
       import { Grid } from "./component/Grid/script.js";
       import { NoMovie } from "./component/NoMovie/script.js";
+      import { MovieDetail } from "./component/MovieDetail/script.js";
 
       // Controleur
       // Rappel, écrire window.C plutôt que let C est nécessaire pour tester depuis la console du navigateur
@@ -26,13 +27,18 @@
       window.C = {};
 
       C.getMovie = async function () {
-        let data = await DataMovie.request()
+        let data = await DataMovie.request();
         if(data != 0){
-          V.renderMovie(data)
+          V.renderMovie("C.handlerMovie()", data)
         }
         else{
           V.renderNoMovie("Aucun titre n'est disponible.", "Veuillez essayer ultérieurement.")
         }
+      }
+
+      C.handlerMovie = async function(id){
+        let data = await DataMovie.detail(id);
+        V.renderMovieDetail(data)
       }
 
       C.start = function(){
@@ -49,14 +55,19 @@
         content.innerHTML = NavBar.format(hHome)
       }
 
-      V.renderMovie = function (data) {
+      V.renderMovie = function (handler, data) {
         let content = document.querySelector("#content");
-        content.innerHTML = Grid.format(data)
+        content.innerHTML = Grid.format(handler, data)
       }
 
       V.renderNoMovie = function (titre, subtitle) {
         let content = document.querySelector("#content");
         content.innerHTML = NoMovie.format(titre, subtitle)
+      }
+
+      V.renderMovieDetail = function (data) {
+        let content = document.querySelector("#content");
+        content.innerHTML = MovieDetail.format(data)
       }
 
       C.start(); // Démarre l'application

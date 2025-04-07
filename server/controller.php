@@ -36,7 +36,7 @@ function addMovieController(){
     $URLtrailer = $_REQUEST['trailer'];
     $age = $_REQUEST['min_age'];
 
-    if ($name && $year && $length && $description && $director && $id_category && $image && $trailer && $min_age) {
+    if ($titre && $annee && $duree && $description && $realisateur && $categorie && $affiche && $URLtrailer && $age) {
         $ok = addMovie($titre, $annee, $duree, $description, $realisateur, $categorie, $affiche, $URLtrailer, $age);
         if ($ok!=0){
             return "Le film $titre à bien été ajouté.";
@@ -45,4 +45,10 @@ function addMovieController(){
     else{
         return "Veuillez remplir tout les champs.";
     }
+}
+
+function seeMovieController(){
+    $id = $_REQUEST['id'];
+    $movie = seeMovie($id);
+    return $movie;
 }
