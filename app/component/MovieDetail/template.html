@@ -4,26 +4,30 @@
             <img class="MovieDetail__img" src="https://mmi.unilim.fr/~regaudie4/SAE2.03-regaudie/server/images/{{image}}" alt="Affiche du film"/>
         </div>
         <figcaption class="MovieDetail__cardcap">
-            <h4 class="MovieDetail__title">{{name}}</h4>
-            <h3 class="MovieDetail__director">{{director}}</h3>
+            <h3 class="MovieDetail__title">{{name}}</h3>
+            <ul class="MovieDetail__infos">
+                <li class="MovieDetail__info">
+                    {{year}}
+                </li>
+                <li class="MovieDetail__info">
+                    {{category}}
+                </li>
+                <li class="MovieDetail__info">
+                    {{min_age}}+
+                </li>
+                <li class="MovieDetail__info">
+                    {{length}}min
+                </li>
+            </ul>
+            <p class="MovieDetail__text">
+                {{description}}
+            </p>
+            <h4 class="MovieDetail__director">Réalisateur : {{director}}</h4>
         </figcaption>
     </figure>
-    <ul class="MovieDetail__infos">
-        <li class="MovieDetail__info">
-            {{year}}
-        </li>
-        <li class="MovieDetail__info">
-            {{category}}
-        </li>
-        <li class="MovieDetail__info">
-            {{min_age}}
-        </li>
-        <li class="MovieDetail__info">
-            {{length}}
-        </li>
-    </ul>
-    <p class="MovieDetail__text">
-        {{description}}
-    </p>
-    {{trailer}}
+    <iframe class="MovieDetail__trailer"
+            width="380"
+            height="215"
+            src="{{trailer}}">
+    </iframe>
 </section>
