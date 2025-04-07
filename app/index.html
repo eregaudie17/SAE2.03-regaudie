@@ -10,7 +10,7 @@
   <body>
     <header id="header"></header>
 
-    <section id="content"></section>
+    <section class="card__container" id="content"></section>
 
     <section id="footer"></section>
 
@@ -29,7 +29,7 @@
       C.getMovie = async function () {
         let data = await DataMovie.request();
         if(data != 0){
-          V.renderMovie("C.handlerMovie()", data)
+          V.renderMovie(data)
         }
         else{
           V.renderNoMovie("Aucun titre n'est disponible.", "Veuillez essayer ultérieurement.")
@@ -55,9 +55,9 @@
         content.innerHTML = NavBar.format(hHome)
       }
 
-      V.renderMovie = function (handler, data) {
+      V.renderMovie = function (data) {
         let content = document.querySelector("#content");
-        content.innerHTML = Grid.format(handler, data)
+        content.innerHTML = Grid.format(data)
       }
 
       V.renderNoMovie = function (titre, subtitle) {

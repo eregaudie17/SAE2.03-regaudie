@@ -23,6 +23,7 @@ require("model.php");
 function readMoviesController(){
     $movies = getAllMovies();
     return $movies;
+    exit();
 }
 
 function addMovieController(){
@@ -45,10 +46,12 @@ function addMovieController(){
     else{
         return "Veuillez remplir tout les champs.";
     }
+    exit();
 }
 
 function seeMovieController(){
     $id = $_REQUEST['id'];
     $movie = seeMovie($id);
     return $movie;
+    exit();
 }

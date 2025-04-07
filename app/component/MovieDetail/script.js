@@ -3,17 +3,20 @@ const template = await templateFile.text();
 
 let MovieDetail = {};
 
-MovieDetail.format = function(d){
-    let html = template;
-    html = html.replace("{{image}}", d.image);
-    html = html.replace("{{titre}}", d.name);
-    html = html.replace("{{realisateur}}", d.director);
-    html = html.replace("{{annee}}", d.year);
-    html = html.replace("{{categorie}}", d.category);
-    html = html.replace("{{age}}", d.min_age);
-    html = html.replace("{{description}}", d.description)
+MovieDetail.format = function (movie) {
+  let html = template;
+  
+  html = html.replace("{{image}}", movie.image);
+  html = html.replace("{{titre}}", movie.name);
+  html = html.replace("{{realisateur}}", movie.director);
+  html = html.replace("{{annee}}", movie.year);
+  html = html.replace("{{categorie}}", movie.category);
+  html = html.replace("{{age}}", movie.min_age);
+  html = html.replace("{{duree}}", movie.length);
+  html = html.replace("{{description}}", movie.description);
+  html = html.replace("{{trailer}}", movie.trailer);
 
-    return html
-}
+  return html;
+};
 
 export {MovieDetail};

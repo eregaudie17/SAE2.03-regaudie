@@ -50,9 +50,10 @@ function addMovie($n, $y, $l, $d1, $d2, $c, $i, $t, $m){
 
 function seeMovie($id){
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
-    $sql = "SELECT Movie.id, Movie.name, Movie.year, Movie.length, Movie.description, Movie.director, Movie.image, 
-    Movie.trailer, Movie.min_age, Movie.id_category, Category.name AS category FROM Movie 
-    JOIN Category ON Movie.id_category = Category.id WHERE Movie.id = :id";
+    $sql = "SELECT Movie.id, Movie.name, image, description, director, year, length, Category.name AS category, min_age, trailer 
+                FROM Movie 
+                INNER JOIN Category ON Movie.id_category = Category.id 
+                WHERE Movie.id = :id";
     $stmt = $cnx->prepare($sql);
     $stmt->bindParam(':id', $id);
     $stmt->execute();
