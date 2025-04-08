@@ -21,7 +21,7 @@ define("DBPWD", "regaudie4");
 
 function getAllMovies(){
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
-    $sql = "select id, name, image from Movie";
+    $sql = "SELECT Movie.id, Movie.name, image, Category.name AS category FROM `Movie` INNER JOIN Category ON Movie.id_category = Category.id;";
     $stmt = $cnx->prepare($sql);
     $stmt->execute();
     $res = $stmt->fetchAll(PDO::FETCH_OBJ);

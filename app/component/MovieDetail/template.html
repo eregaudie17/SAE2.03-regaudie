@@ -23,11 +23,13 @@
                 {{description}}
             </p>
             <h4 class="MovieDetail__director">Réalisateur : {{director}}</h4>
+            <div class="MovieDetail__trailercont">
+                <iframe class="MovieDetail__trailer"
+                        width="100%"
+                        height="100%"
+                        src="{{trailer}}">
+                </iframe>
+            </div>
         </figcaption>
     </figure>
-    <iframe class="MovieDetail__trailer"
-            width="380"
-            height="215"
-            src="{{trailer}}">
-    </iframe>
 </section>
