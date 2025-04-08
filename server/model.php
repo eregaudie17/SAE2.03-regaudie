@@ -21,8 +21,28 @@ define("DBPWD", "regaudie4");
 
 function getAllMovies(){
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
-    $sql = "SELECT Movie.id, Movie.name, image, Category.name AS category FROM `Movie` INNER JOIN Category ON Movie.id_category = Category.id;";
+    $sql = "SELECT Movie.id, Movie.name, image, Category.name AS category FROM `Movie` INNER JOIN Category ON Movie.id_category = Category.id ORDER BY category;";
     $stmt = $cnx->prepare($sql);
+    $stmt->execute();
+    $res = $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $res;
+}
+
+function getAllCategories(){
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    $sql = "SELECT * FROM Category";
+    $stmt = $cnx->prepare($sql);
+    $stmt->execute();
+    $res = $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $res;
+}
+
+function getAllMoviesByCategories($id){
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    $sql = "SELECT Movie.id, Movie.name, image, Category.name AS category FROM `Movie` 
+    INNER JOIN Category ON Movie.id_category = Category.id WHERE Category.id= :id ORDER BY Movie.name;";
+    $stmt = $cnx->prepare($sql);
+    $stmt->bindParam(':id', $id);
     $stmt->execute();
     $res = $stmt->fetchAll(PDO::FETCH_OBJ);
     return $res;

@@ -5,7 +5,8 @@
 @import "./utilities.css" layer(utilities);
 
 @import "../component/NavBar/style.css" layer(components);
-@import "../component/Grid/style.css" layer(components);
+@import "../component/Categories/style.css" layer(components);
+@import "../component/Cards/style.css" layer(components);
 @import "../component/NoMovie/style.css" layer(components);
 @import "../component/MovieDetail/style.css" layer(components);
 
@@ -20,4 +21,14 @@ body{
 
 header{
     width: 100%;
+}
+
+.card__container{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-inline: 0.5rem;
 }

@@ -9,6 +9,18 @@ DataMovie.request = async function(){
     return data;
 }
 
+DataMovie.categories = async function(){
+    let answer = await fetch(HOST_URL + "/server/script.php?todo=getCategories");  
+    let data = await answer.json();
+    return data;
+}
+
+DataMovie.requestMovieByCategory = async function(category){
+    let answer = await fetch(HOST_URL + "/server/script.php?todo=readMoviesByCategories&category=" + category);  
+    let data = await answer.json();
+    return data;
+}
+
 DataMovie.detail = async function(id){
     let answer = await fetch(HOST_URL + "/server/script.php?todo=seeMovie&id=" + id);
     let data = await answer.json();

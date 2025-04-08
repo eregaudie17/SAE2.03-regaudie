@@ -26,6 +26,19 @@ function readMoviesController(){
     exit();
 }
 
+function getCategoriesController(){
+    $categories = getAllCategories();
+    return $categories;
+    exit();
+}
+
+function readMoviesByCategoriesController(){
+    $cate = $_REQUEST['category'];
+    $categories = getAllMoviesByCategories($cate);
+    return $categories;
+    exit();
+}
+
 function addMovieController(){
     $titre = $_REQUEST['name'];
     $annee = $_REQUEST['year'];

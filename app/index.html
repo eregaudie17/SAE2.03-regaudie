@@ -17,7 +17,8 @@
     <script type="module">
       import { DataMovie } from "./data/dataMovie.js";
       import { NavBar } from "./component/NavBar/script.js"
-      import { Grid } from "./component/Grid/script.js";
+      import { Category } from "./component/Categories/script.js";
+      import { Cards } from "./component/Cards/script.js";
       import { NoMovie } from "./component/NoMovie/script.js";
       import { MovieDetail } from "./component/MovieDetail/script.js";
 
@@ -26,15 +27,17 @@
       // Une fois l'application terminée, on pourrait remettre let C.
       window.C = {};
 
-      C.getMovie = async function () {
-        let data = await DataMovie.request();
+      C.getMovieByCategory = async function () {
+        let data = await DataMovie.categories();
+        let html = await Category.formatMany(data);
         if(data != 0){
-          V.renderMovie(data)
+          V.renderMoviesByCategories(html);
         }
         else{
           V.renderNoMovie("Aucun titre n'est disponible.", "Veuillez essayer ultérieurement.")
         }
       }
+
 
       C.handlerMovie = async function(id){
         let data = await DataMovie.detail(id);
@@ -42,12 +45,12 @@
       }
 
       C.handlerHome = async function(){
-        C.getMovie();
+        C.getMovieByCategory();
       }
 
       C.start = function(){
         V.renderNavBar("../server/images/assets/Logo AraWatch.png", "C.handlerHome()")
-        C.getMovie();
+        C.getMovieByCategory();
       }
 
 
@@ -61,7 +64,7 @@
 
       V.renderMovie = function (data) {
         let content = document.querySelector("#content");
-        content.innerHTML = Grid.format(data)
+        content.innerHTML = Cards.formatMany(data)
       }
 
       V.renderNoMovie = function (titre, subtitle) {
@@ -69,9 +72,14 @@
         content.innerHTML = NoMovie.format(titre, subtitle)
       }
 
+      V.renderMoviesByCategories = function (movies) {
+        let content = document.querySelector("#content");
+        content.innerHTML = movies;
+      }
+
       V.renderMovieDetail = function (data) {
         let content = document.querySelector("#content");
-        content.innerHTML = MovieDetail.format(data)
+        content.innerHTML = MovieDetail.format(data);
       }
 
       C.start(); // Démarre l'application
