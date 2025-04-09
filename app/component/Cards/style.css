@@ -8,6 +8,7 @@
     border: solid var(--color-dark-blue) 2px;
     border-radius: 15px;
     overflow: hidden;
+    transition: 0.3s ease-in-out;
 }
 
 .card__imgcont{
@@ -30,6 +31,8 @@
     text-align: center;
     justify-content: center;
     background-color: var(--color-dark-blue);
+    transition: 0.3s ease-in-out;
+
 }
 
 .card__title{
