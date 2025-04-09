@@ -54,4 +54,8 @@
         width: 15rem;
         height: 24rem;
     }
+
+    .card__imgcont{
+        width: object-fit;
+    }
   }
