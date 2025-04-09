@@ -16,6 +16,8 @@
 
     <script type="module">
       import { DataMovie } from "./data/dataMovie.js";
+      import { DataProfile } from "./data/dataProfile.js";
+      import { Profiles } from "./component/Profiles/script.js";
       import { NavBar } from "./component/NavBar/script.js"
       import { Category } from "./component/Categories/script.js";
       import { Cards } from "./component/Cards/script.js";
@@ -30,6 +32,7 @@
       C.getMovieByCategory = async function () {
         let data = await DataMovie.categories();
         let html = await Category.formatMany(data);
+        V.renderNavBar("../server/images/assets/Logo AraWatch.png", "C.handlerHome()")
         if(data != 0){
           V.renderMoviesByCategories(html);
         }
@@ -38,6 +41,14 @@
         }
       }
 
+      C.getProfiles = async function (handler) {
+        let data = await DataProfile.request();
+        V.renderProfiles(handler, data);
+      }
+
+      C.handlerProfile = async function(){
+        C.getMovieByCategory();
+      }
 
       C.handlerMovie = async function(id){
         let data = await DataMovie.detail(id);
@@ -49,13 +60,17 @@
       }
 
       C.start = function(){
-        V.renderNavBar("../server/images/assets/Logo AraWatch.png", "C.handlerHome()")
-        C.getMovieByCategory();
+        C.getProfiles("C.handlerProfile()");
       }
 
 
       // Vue (contient tout ce qui est relatif à l'affichage)
       window.V = {};
+
+      V.renderProfiles = function (handler, data) {
+        let content = document.querySelector("#content");
+        content.innerHTML = Profiles.formatMany(handler, data);
+      }
 
       V.renderNavBar = function (logo, hHome) {
         let content = document.querySelector("#header");

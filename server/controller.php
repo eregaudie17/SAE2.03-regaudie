@@ -85,3 +85,9 @@ function seeMovieController(){
     return $movie;
     exit();
 }
+
+function getProfileController(){
+    $profiles = getAllProfiles();
+    return $profiles;
+    exit();
+}

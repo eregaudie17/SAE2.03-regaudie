@@ -4,6 +4,7 @@
 @import "./variables.css" layer(variables);
 @import "./utilities.css" layer(utilities);
 
+@import "../component/Profiles/style.css" layer(components);
 @import "../component/NavBar/style.css" layer(components);
 @import "../component/Categories/style.css" layer(components);
 @import "../component/Cards/style.css" layer(components);
@@ -30,5 +31,6 @@ header{
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
+    height: 100%;
     padding-inline: 0.5rem;
 }

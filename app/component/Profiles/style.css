@@ -1,0 +1,127 @@
+.Profiles{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    
+}
+
+.Profiles__logocont{
+    position: absolute;
+    width: 5rem;
+    top: 15px;
+    left: 15px;
+}
+
+.Profiles__logo{
+    width: 100%;
+    height: 100%;
+}
+
+.Profiles__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: fit-content;
+    max-width: 65rem;
+    margin-top: 13rem;
+    padding: 1rem;
+    padding-bottom: 3rem;
+    border-radius: 15px;
+    background-color: var(--color-dark-blue);
+    box-shadow: 0px 0px 20px var(--color-black);
+}
+
+.Profiles__title{
+    font-size: var(--fs-4);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.Profiles__cardcont{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: fit-content;
+    height: fit-content;
+    gap: 2rem;
+}
+
+.Profiles__card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 6rem;
+    height: 6rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.Profiles__imgcont{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.Profiles__img{
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+}
+
+.Profiles__text{
+    position: absolute;
+    display: flex;
+    text-align: center;
+    font-size: var(--fs-1);
+    font-weight: var(--fw-500);
+    bottom: -35px;
+    transition: all 0.3s ease-in-out;
+}
+
+.Profiles__card:hover{
+    cursor: pointer;
+
+    .Profiles__img{
+        filter: blur(1.5px) grayscale(80%);
+    }
+
+    .Profiles__text{
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 50rem){
+    .Profiles__logocont{
+        width: 10rem;
+    }
+
+    .Profiles__container{
+        padding: 3rem;
+    }
+
+    .Profiles__title{
+        font-size: var(--fs-5);
+    }
+
+    .Profiles__card{
+        width: 9rem;
+        height: 9rem;
+    }
+
+    .Profiles__text{
+        position: absolute;
+        display: none;
+        text-align: center;
+        font-size: var(--fs-6);
+        bottom: 10px;
+    }
+}
