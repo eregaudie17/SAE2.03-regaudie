@@ -68,6 +68,20 @@ function addMovie($n, $y, $l, $d1, $d2, $c, $i, $t, $m){
     return $res;
 }
 
+function addProfile($n, $i, $a){
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    $sql = "INSERT INTO Profile (name, avatar, min_age)
+            VALUES (:name, :avatar, :min_age)";
+    $stmt = $cnx->prepare($sql);
+    $stmt->bindParam(':name', $n);
+    $stmt->bindParam(':avatar', $i);
+    $stmt->bindParam(':min_age', $a);
+    
+    $stmt->execute();
+    $res = $stmt->rowCount();
+    return $res;
+}
+
 function seeMovie($id){
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
     $sql = "SELECT Movie.id, Movie.name, image, description, director, year, length, Category.name AS category, min_age, trailer 

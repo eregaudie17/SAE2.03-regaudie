@@ -68,6 +68,10 @@ if ( isset($_REQUEST['todo']) ){
       $data = addMovieController();
       break;
 
+    case 'addProfile':
+      $data = addProfileController();
+      break;
+
     case 'seeMovie' :
       $data = seeMovieController();
       break;

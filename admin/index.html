@@ -7,31 +7,43 @@
     <link rel="stylesheet" href="./css/base.css" />
   </head>
   <body>
-    <img class="logo" src="../server/images/assets/Logo AraWatch.png"/>
+    <header id="header"></header>
     <div class="container">
 
       <section id="log"></section>
 
-      <section id="addMovie"></section>
+      <section id="forms"></section>
 
       <script type="module">
         import { Log } from "./component/Log/script.js";
+        import { NavBar } from "./component/NavBar/script.js";
         import { AddMovieForm } from "./component/AddMovieForm/script.js";
-
+        import { AddProfileForm } from "./component/AddProfileForm/script.js";
         import { DataMovie } from "./data/dataMovie.js";
+        import { DataProfile } from "./data/dataProfile.js";
 
         window.C = {};
 
-        C.handlerUpdate = async function(){
+        C.handlerAddMovie = async function(){
           let form = document.querySelector('.addMovie__form');
           let fd = new FormData(form);
           let res = await DataMovie.add(fd);
           V.renderLog(res);
         }
 
+        C.handlerAddProfile = async function(){
+          let form = document.querySelector('.addProfile__form');
+          let fd = new FormData(form);
+          let res = await DataProfile.add(fd);
+          V.renderLog(res);
+        }
+
         C.start = function () {
           V.renderLog("Démarrage de l'application");
-          V.renderAddMovie("C.handlerUpdate()");
+          V.renderNavBar("../server/images/assets/Logo AraWatch.png",
+                        "V.renderAddMovie('C.handlerAddMovie()')",
+                        "V.renderAddProfile('C.handlerAddProfile()')");
+          V.renderAddMovie("C.handlerAddMovie()");
         };
 
         window.V = {};
@@ -41,10 +53,20 @@
           content.innerHTML = Log.format(txt);
         };
 
+        V.renderNavBar = function (logo, hMovie, hProfile) {
+          let content = document.querySelector("#header");
+          content.innerHTML = NavBar.format(logo, hMovie, hProfile);
+        };
+
         V.renderAddMovie = function(handler){
-          let content = document.querySelector("#addMovie");
+          let content = document.querySelector("#forms");
           content.innerHTML = AddMovieForm.format(handler)
-        }
+        };
+
+        V.renderAddProfile = function(handler){
+          let content = document.querySelector("#forms");
+          content.innerHTML = AddProfileForm.format(handler)
+        };
 
         C.start();
       </script>

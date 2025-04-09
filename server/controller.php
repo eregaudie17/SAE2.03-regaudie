@@ -62,6 +62,23 @@ function addMovieController(){
     exit();
 }
 
+function addProfileController(){
+    $nom = $_REQUEST['name'];
+    $avatar = $_REQUEST['avatar'];
+    $age = $_REQUEST['min_age'];
+
+    if ($nom && $avatar && $age) {
+        $ok = addProfile($nom, $avatar, $age);
+        if ($ok!=0){
+            return "Le profil de $nom à bien été ajouté.";
+        }
+    }
+    else{
+        return "Veuillez remplir tout les champs.";
+    }
+    exit();
+}
+
 function seeMovieController(){
     $id = $_REQUEST['id'];
     $movie = seeMovie($id);

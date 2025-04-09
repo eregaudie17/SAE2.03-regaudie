@@ -5,27 +5,23 @@
 @import "./utilities.css" layer(utilities);
 
 @import "../component/Log/style.css" layer(components);
+@import "../component/NavBar/style.css" layer(components);
 @import "../component/AddMovieForm/style.css" layer(components);
+@import "../component/AddProfileForm/style.css" layer(components);
 
 body{
     display: flex;
     flex-direction: column;
     align-items: start;
+    width: 100%;
     font-family: var(--ff-nunito);
 }
 
 .container{
     width: 100%;
     height: 100%;
-    padding: 7rem 10rem;
+    padding: 5rem 10rem;
     background-size: cover;
     background-repeat: no-repeat;
     background: linear-gradient(hsla(252, 71%, 8%, 0.600), hsla(252, 71%, 8%, 0.600)), url("../../server/images/assets/captain-america.jpg");
-}
-
-.logo{
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    width: 120px;
 }

@@ -1,4 +1,4 @@
-import { Cards } from "../Cards/script";
+import { Cards } from "../Cards/script.js";
 import { DataMovie } from "../../data/dataMovie.js";
 
 const templateFile = await fetch("./component/Categories/template.html");
