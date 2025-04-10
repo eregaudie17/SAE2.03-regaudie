@@ -1,4 +1,5 @@
 .navbar {
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -29,6 +30,28 @@
   margin-left: 0rem;
 }
 
+.navbar__profiles{
+  position: absolute;
+  top: 1.25rem;
+  right: 2rem;
+  color: var(--color-white);
+  font-family: var(--ff-nunito);
+  font-size: var(--fs-1);
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: var(--color-blue);
+}
+
+.navbar__profiles:focus{
+  outline: none;
+}
+
+.navbar__profilename{
+
+}
+
+
+
 @media screen and (min-width : 50rem){
   .navbar{
     font-size: var(--fs-2);
@@ -40,5 +63,12 @@
 
   .navbar__logo{
     width: 8rem;
+  }
+
+  .navbar__profiles{
+    top: 3rem;
+    right: 5rem;
+    font-size: var(--fs-2);
+    padding: 0.25rem 0.5rem;
   }
 }

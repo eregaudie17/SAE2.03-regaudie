@@ -91,3 +91,15 @@ function getProfileController(){
     return $profiles;
     exit();
 }
+
+function getProfileByIdController(){
+    $id = $_REQUEST['id'];
+    if ($id) {
+        $profile = getProfileById($id);
+    }
+    else {
+        $profile = getAllProfiles();
+    }
+    return $profile;
+    exit();
+}

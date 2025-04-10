@@ -4,7 +4,7 @@
 @import "./variables.css" layer(variables);
 @import "./utilities.css" layer(utilities);
 
-@import "../component/Profiles/style.css" layer(components);
+@import "../component/AccProfiles/style.css" layer(components);
 @import "../component/NavBar/style.css" layer(components);
 @import "../component/Categories/style.css" layer(components);
 @import "../component/Cards/style.css" layer(components);
@@ -21,6 +21,9 @@ body{
 }
 
 header{
+    position: sticky;
+    top: 0;
+    z-index: 10;
     width: 100%;
 }
 

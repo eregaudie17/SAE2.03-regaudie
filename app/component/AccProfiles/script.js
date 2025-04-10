@@ -1,25 +1,25 @@
-const templateFile = await fetch("./component/Profiles/template.html");
+const templateFile = await fetch("./component/AccProfiles/template.html");
 const template = await templateFile.text();
 
-const templateFile2 = await fetch("./component/Profiles/templateProfile.html");
+const templateFile2 = await fetch("./component/AccProfiles/templateProfile.html");
 const templateProfile = await templateFile2.text();
 
 let Profiles = {};
 
-Profiles.format = function (handler, avatar, name) {
+Profiles.format = function (id, avatar, name) {
     let html = templateProfile;
-    html = html.replace("{{handler}}", handler);
+    html = html.replace("{{handler}}", `C.getPage(${id})`);
     html = html.replace("{{avatar}}", avatar);
     html = html.replace("{{name}}", name);
 
     return html;
 }
 
-Profiles.formatMany = function (handler, profiles) {
+Profiles.formatMany = function (profiles) {
     let html = template;
     let profilesList = "";
     for (let profile of profiles) {
-        profilesList = profilesList + Profiles.format(handler, profile.avatar, profile.name);
+        profilesList = profilesList + Profiles.format(profile.id, profile.avatar, profile.name);
     }
     html = html.replace("{{profiles}}", profilesList);
     return html;

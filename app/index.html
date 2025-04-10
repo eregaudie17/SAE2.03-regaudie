@@ -17,7 +17,7 @@
     <script type="module">
       import { DataMovie } from "./data/dataMovie.js";
       import { DataProfile } from "./data/dataProfile.js";
-      import { Profiles } from "./component/Profiles/script.js";
+      import { Profiles } from "./component/AccProfiles/script.js";
       import { NavBar } from "./component/NavBar/script.js"
       import { Category } from "./component/Categories/script.js";
       import { Cards } from "./component/Cards/script.js";
@@ -29,11 +29,15 @@
       // Une fois l'application terminée, on pourrait remettre let C.
       window.C = {};
 
+      C.getProfiles = async function () {
+        let data = await DataProfile.request("");
+        V.renderProfiles(data);
+      }
+
       C.getMovieByCategory = async function () {
-        let data = await DataMovie.categories();
-        let html = await Category.formatMany(data);
-        V.renderNavBar("../server/images/assets/Logo AraWatch.png", "C.handlerHome()")
-        if(data != 0){
+        let dataMovie = await DataMovie.categories();
+        let html = await Category.formatMany(dataMovie);
+        if(dataMovie != 0){
           V.renderMoviesByCategories(html);
         }
         else{
@@ -41,14 +45,17 @@
         }
       }
 
-      C.getProfiles = async function (handler) {
-        let data = await DataProfile.request();
-        V.renderProfiles(handler, data);
+      C.getNav = async function () {
+        let data = await DataProfile.request("");
+        V.renderNavBar("../server/images/assets/Logo AraWatch.png", "C.handlerHome()", data);
       }
 
-      C.handlerProfile = async function(){
+      C.getPage = function(userId){
+        C.getNav();
         C.getMovieByCategory();
       }
+
+
 
       C.handlerMovie = async function(id){
         let data = await DataMovie.detail(id);
@@ -56,25 +63,27 @@
       }
 
       C.handlerHome = async function(){
-        C.getMovieByCategory();
+        C.getPage();
       }
 
+
+
       C.start = function(){
-        C.getProfiles("C.handlerProfile()");
+        C.getProfiles("C.getPage()");
       }
 
 
       // Vue (contient tout ce qui est relatif à l'affichage)
       window.V = {};
 
-      V.renderProfiles = function (handler, data) {
+      V.renderProfiles = function (data) {
         let content = document.querySelector("#content");
-        content.innerHTML = Profiles.formatMany(handler, data);
+        content.innerHTML = Profiles.formatMany(data);
       }
 
-      V.renderNavBar = function (logo, hHome) {
+      V.renderNavBar = function (logo, hHome, profiles) {
         let content = document.querySelector("#header");
-        content.innerHTML = NavBar.format(logo, hHome)
+        content.innerHTML = NavBar.formatMany(logo, hHome, profiles);
       }
 
       V.renderMovie = function (data) {
