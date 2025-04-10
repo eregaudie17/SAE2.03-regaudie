@@ -34,9 +34,9 @@
         V.renderProfiles(data);
       }
 
-      C.getMovieByCategory = async function () {
+      C.getMovieByCategory = async function (userMin_age) {
         let dataMovie = await DataMovie.categories();
-        let html = await Category.formatMany(dataMovie);
+        let html = await Category.formatMany(dataMovie, userMin_age);
         if(dataMovie != 0){
           V.renderMoviesByCategories(html);
         }
@@ -47,12 +47,13 @@
 
       C.getNav = async function (selectedId) {
         let data = await DataProfile.request("");
-        V.renderNavBar("../server/images/assets/Logo AraWatch.png", "C.handlerHome()", data, selectedId);
+        let age = await DataProfile.request(selectedId);
+        V.renderNavBar("../server/images/assets/Logo AraWatch.png", `C.handlerHome(${selectedId}, ${age[0].min_age})`, data, selectedId);
       }
 
-      C.getPage = function(userId){
+      C.getPage = function(userId, userMin_Age) {
         C.getNav(userId);
-        C.getMovieByCategory();
+        C.getMovieByCategory(userMin_Age);
       }
 
 
@@ -62,12 +63,12 @@
         V.renderMovieDetail(data)
       }
 
-      C.handlerHome = async function(){
-        C.getPage();
+      C.handlerHome = async function(id, age){
+        C.getPage(id, age);
       }
 
-      C.handlerProfile = function(id) {
-        C.getPage(id);
+      C.handlerProfile = function(id, age) {
+        C.getPage(id, age);
       }
 
 

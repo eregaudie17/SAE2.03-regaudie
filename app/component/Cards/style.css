@@ -41,6 +41,7 @@
 }
 
 .card:hover{
+    cursor: pointer;
     border: solid var(--color-white) 2px;
     color: var(--color-dark-blue);
 

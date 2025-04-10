@@ -37,12 +37,13 @@ function getAllCategories(){
     return $res;
 }
 
-function getAllMoviesByCategories($id){
+function getAllMoviesByCategories($id, $age){
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
     $sql = "SELECT Movie.id, Movie.name, image, Category.name AS category FROM `Movie` 
-    INNER JOIN Category ON Movie.id_category = Category.id WHERE Category.id= :id ORDER BY Movie.name;";
+    INNER JOIN Category ON Movie.id_category = Category.id WHERE Category.id= :id AND Movie.min_age <= :age ORDER BY Movie.name;";
     $stmt = $cnx->prepare($sql);
     $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':age', $age);
     $stmt->execute();
     $res = $stmt->fetchAll(PDO::FETCH_OBJ);
     return $res;

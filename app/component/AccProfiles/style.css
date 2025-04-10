@@ -79,7 +79,7 @@
 
 .Profiles__text{
     position: absolute;
-    display: flex;
+    display: none;
     text-align: center;
     font-size: var(--fs-1);
     font-weight: var(--fw-500);

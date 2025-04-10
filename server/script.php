@@ -72,10 +72,6 @@ if ( isset($_REQUEST['todo']) ){
       $data = seeMovieController();
       break;
     
-    case 'getProfiles' :
-      $data = getProfileController();
-      break;
-    
     case 'getProfile' :
       $data = getProfileByIdController();
       break;

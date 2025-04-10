@@ -14,10 +14,10 @@ Category.format = function (category, movies) {
     return html; 
 }
 
-Category.formatMany = async function (categories){
+Category.formatMany = async function (categories, min_age){
     let html = "";
     for(const elt of categories){
-        let movies = await DataMovie.requestMovieByCategory(elt.id);
+        let movies = await DataMovie.requestMovieByCategory(elt.id, min_age);
         if(movies.length == 0){
           continue;
         }

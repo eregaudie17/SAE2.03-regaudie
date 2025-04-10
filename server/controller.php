@@ -34,7 +34,8 @@ function getCategoriesController(){
 
 function readMoviesByCategoriesController(){
     $cate = $_REQUEST['category'];
-    $categories = getAllMoviesByCategories($cate);
+    $age = $_REQUEST['min_age'];
+    $categories = getAllMoviesByCategories($cate, $age);
     return $categories;
     exit();
 }
@@ -49,6 +50,10 @@ function addMovieController(){
     $affiche = $_REQUEST['image'];
     $URLtrailer = $_REQUEST['trailer'];
     $age = $_REQUEST['min_age'];
+
+    if ($age<3 || $age>21){
+        return "L'âge doit être compris entre 3 et 21 ans.";
+    }
 
     if ($titre && $annee && $duree && $description && $realisateur && $categorie && $affiche && $URLtrailer && $age) {
         $ok = addMovie($titre, $annee, $duree, $description, $realisateur, $categorie, $affiche, $URLtrailer, $age);
@@ -83,12 +88,6 @@ function seeMovieController(){
     $id = $_REQUEST['id'];
     $movie = seeMovie($id);
     return $movie;
-    exit();
-}
-
-function getProfileController(){
-    $profiles = getAllProfiles();
-    return $profiles;
     exit();
 }
 

@@ -9,10 +9,4 @@ DataProfile.request = async function(userId){
     return data;
 }
 
-DataProfile.requestAll = async function(userId){
-    let answer = await fetch(HOST_URL + "/server/script.php?todo=getProfiles)");  
-    let data = await answer.json();
-    return data;
-}
-
 export {DataProfile};
