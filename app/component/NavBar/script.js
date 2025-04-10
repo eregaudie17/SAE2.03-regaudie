@@ -16,19 +16,32 @@ NavBar.formatHome = function (hHome) {
   return html;
 };
 
-NavBar.formatProfiles = function (id, name, avatar) {
+NavBar.formatProfiles = function (id, name, avatar, selected = "") {
   let html = templateProfiles;
   html = html.replaceAll("{{id}}", id);
   html = html.replaceAll("{{name}}", name);
   html = html.replace("{{avatar}}", avatar);
+  html = html.replace("{{handler}}", `C.handlerProfile(${id})`);
+  
+  if (selected) {
+      const selectedDisplay = `
+          <img class="navbar__profile-img" src="../server/images/avatar/${avatar}" alt="Avatar de ${name}">
+          <span class="navbar__profilename">${name}</span>
+      `;
+      setTimeout(() => {
+          document.querySelector('.navbar__profiles-selected').innerHTML = selectedDisplay;
+      }, 0);
+  }
+  
   return html;
-};
+}
 
-NavBar.formatMany = function (logo, hHome, profiles) {
+NavBar.formatMany = function (logo, hHome, profiles, selectedId) {
   let html = template;
   let profilesList = "";
   for (let profile of profiles) {
-    profilesList = profilesList + NavBar.formatProfiles(profile.id, profile.name, profile.avatar);
+      let selected = (profile.id == selectedId) ? " selected" : "";
+      profilesList = profilesList + NavBar.formatProfiles(profile.id, profile.name, profile.avatar, selected);
   }
   html = html.replace("{{logo}}", logo);
   html = html.replace("{{items}}", NavBar.formatHome(hHome));

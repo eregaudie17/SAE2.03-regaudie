@@ -45,13 +45,13 @@
         }
       }
 
-      C.getNav = async function () {
+      C.getNav = async function (selectedId) {
         let data = await DataProfile.request("");
-        V.renderNavBar("../server/images/assets/Logo AraWatch.png", "C.handlerHome()", data);
+        V.renderNavBar("../server/images/assets/Logo AraWatch.png", "C.handlerHome()", data, selectedId);
       }
 
       C.getPage = function(userId){
-        C.getNav();
+        C.getNav(userId);
         C.getMovieByCategory();
       }
 
@@ -64,6 +64,10 @@
 
       C.handlerHome = async function(){
         C.getPage();
+      }
+
+      C.handlerProfile = function(id) {
+        C.getPage(id);
       }
 
 
@@ -81,9 +85,9 @@
         content.innerHTML = Profiles.formatMany(data);
       }
 
-      V.renderNavBar = function (logo, hHome, profiles) {
+      V.renderNavBar = function (logo, hHome, profiles, selectedId) {
         let content = document.querySelector("#header");
-        content.innerHTML = NavBar.formatMany(logo, hHome, profiles);
+        content.innerHTML = NavBar.formatMany(logo, hHome, profiles, selectedId);
       }
 
       V.renderMovie = function (data) {

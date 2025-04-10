@@ -30,24 +30,63 @@
   margin-left: 0rem;
 }
 
-.navbar__profiles{
+.navbar__profiles {
   position: absolute;
-  top: 1.25rem;
-  right: 2rem;
-  color: var(--color-white);
-  font-family: var(--ff-nunito);
-  font-size: var(--fs-1);
+  top: 1.15rem;
+  right: 1.5rem;
+  display: inline-block;
+  width: 10rem;
+}
+
+.navbar__profiles-selected {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   padding: 0.5rem 1rem;
-  border: none;
   background-color: var(--color-blue);
+  color: var(--color-white);
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.navbar__profiles:focus{
-  outline: none;
+.navbar__profiles-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-dark-blue);
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
 }
 
-.navbar__profilename{
+.navbar__profiles:hover .navbar__profiles-content {
+  display: block;
+}
 
+.navbar__profile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.navbar__profile:hover {
+  background-color: var(--color-gray-dark);
+}
+
+.navbar__profile-img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.navbar__profilename {
+  color: var(--color-white);
+  font-size: var(--fs-1);
 }
 
 
@@ -68,7 +107,13 @@
   .navbar__profiles{
     top: 3rem;
     right: 5rem;
+    width: 14rem;
     font-size: var(--fs-2);
     padding: 0.25rem 0.5rem;
   }
+
+  .navbar__profilename {
+    font-size: var(--fs-2);
+  }
+  
 }
