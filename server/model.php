@@ -83,6 +83,21 @@ function addProfile($n, $i, $a){
     return $res;
 }
 
+function updateProfile($id, $nom, $avatar, $age){
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    $sql = "UPDATE Profile SET name = :name, avatar = :avatar, min_age = :min_age 
+            WHERE id = :id";
+    $stmt = $cnx->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':name', $nom);
+    $stmt->bindParam(':avatar', $avatar);
+    $stmt->bindParam(':min_age', $age);
+    
+    $stmt->execute();
+    $res = $stmt->rowCount();
+    return $res;
+}
+
 function seeMovie($id){
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
     $sql = "SELECT Movie.id, Movie.name, image, description, director, year, length, Category.name AS category, min_age, trailer 

@@ -8,6 +8,7 @@
 @import "../component/NavBar/style.css" layer(components);
 @import "../component/AddMovieForm/style.css" layer(components);
 @import "../component/AddProfileForm/style.css" layer(components);
+@import "../component/ModProfileForm/style.css" layer(components);
 
 body{
     display: flex;
@@ -24,4 +25,10 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     background: linear-gradient(hsla(252, 71%, 8%, 0.600), hsla(252, 71%, 8%, 0.600)), url("../../server/images/assets/captain-america.jpg");
+}
+
+.forms__cont{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
 }

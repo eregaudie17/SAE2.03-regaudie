@@ -21,7 +21,7 @@
             <option value="11">Romance</option>
         </select>
         <input required class="addMovie__input" type="text" name="image" placeholder="Nom du fichier de l'affiche du film">
-        <input required class="addMovie__input" type="text" name="trailer" placeholder="URL du trailer du film">
+        <input required class="addMovie__input" type="url" name="trailer" placeholder="URL du trailer du film">
         <input required class="addMovie__input" type="number" name="min_age" value="3" placeholder="Restriction d'âge du film" min="3" max="21">
         <input class="addMovie__button" onclick="{{handler}}" type="button" value="Ajouter" name="todo">
     </form>

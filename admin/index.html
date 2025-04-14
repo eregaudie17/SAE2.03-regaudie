@@ -12,13 +12,14 @@
 
       <section id="log"></section>
 
-      <section id="forms"></section>
+      <section class="forms__cont" id="forms"></section>
 
       <script type="module">
         import { Log } from "./component/Log/script.js";
         import { NavBar } from "./component/NavBar/script.js";
         import { AddMovieForm } from "./component/AddMovieForm/script.js";
         import { AddProfileForm } from "./component/AddProfileForm/script.js";
+        import { ModProfileForm } from "./component/ModProfileForm/script.js";
         import { DataMovie } from "./data/dataMovie.js";
         import { DataProfile } from "./data/dataProfile.js";
 
@@ -38,11 +39,32 @@
           V.renderLog(res);
         }
 
+        C.handlerSelectProfile = async function(){
+          let form = document.querySelector('.modProfile__form');
+          let fd = new FormData(form);
+          let id = fd.get("id");
+          let res = await DataProfile.request(id);
+          if(res.length > 0){
+            ModProfileForm.autoFill(res[0]);
+            V.renderLog("Le profil de " + res[0].name + " a été chargé");
+          }
+          else{
+            V.renderLog("Le profil n'existe pas");
+          }
+        }
+
+        C.handlerUpdateProfile = async function(){
+          let form = document.querySelector('.modProfile__form');
+          let fd = new FormData(form);
+          let res = await DataProfile.update(fd);
+          V.renderLog(res);
+        }
+
         C.start = function () {
           V.renderLog("Démarrage de l'application");
           V.renderNavBar("../server/images/assets/Logo AraWatch.png",
                         "V.renderAddMovie('C.handlerAddMovie()')",
-                        "V.renderAddProfile('C.handlerAddProfile()')");
+                        "V.renderProfiles('C.handlerAddProfile()', 'C.handlerSelectProfile()','C.handlerUpdateProfile()')");
           V.renderAddMovie("C.handlerAddMovie()");
         };
 
@@ -63,9 +85,9 @@
           content.innerHTML = AddMovieForm.format(handler)
         };
 
-        V.renderAddProfile = function(handler){
+        V.renderProfiles = function(handler1, handler2, handler3){
           let content = document.querySelector("#forms");
-          content.innerHTML = AddProfileForm.format(handler)
+          content.innerHTML = AddProfileForm.format(handler1) + ModProfileForm.format(handler2, handler3);
         };
 
         C.start();

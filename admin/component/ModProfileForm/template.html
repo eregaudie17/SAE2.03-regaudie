@@ -1,0 +1,16 @@
+<div class="modProfile">
+    <h4 class="modProfile__title">Modifier un profil</h4>
+    <form class="modProfile__form">
+        <input required class="modProfile__input" type="number" 
+               name="id" onchange="{{handler1}}"
+               placeholder="ID du profil à modifier">
+        <input required class="modProfile__input" type="text" 
+               name="name" placeholder="Nom du profil">
+        <input required class="modProfile__input" type="text" 
+               name="avatar" placeholder="Nom du fichier de l'avatar">
+        <input required class="modProfile__input" type="number" 
+               name="min_age" placeholder="Restriction d'âge">
+        <input class="modProfile__button" type="button" 
+               onclick="{{handler2}}" value="Modifier" name="todo">
+    </form>
+</div>

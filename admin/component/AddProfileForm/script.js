@@ -3,9 +3,9 @@ let template = await templateFile.text();
 
 let AddProfileForm = {};
 
-AddProfileForm.format = function(handler){
+AddProfileForm.format = function(handler1){
     let html = template;
-    html = html.replace('{{handler}}', handler);
+    html = html.replace('{{handler1}}', handler1);
     return html;
 }
 

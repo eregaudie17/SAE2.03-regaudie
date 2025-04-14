@@ -84,6 +84,28 @@ function addProfileController(){
     exit();
 }
 
+function updateProfileController(){
+    $id = $_REQUEST['id'];
+    $nom = $_REQUEST['name'];
+    $avatar = $_REQUEST['avatar'];
+    $age = $_REQUEST['min_age'];
+    
+    if ($age<3 || $age>21){
+        return "L'âge doit être compris entre 3 et 21 ans.";
+    }
+    
+    if ($nom && $avatar && $age) {
+        $ok = updateProfile($id, $nom, $avatar, $age);
+        if ($ok!=0){
+            return "Le profil de $nom à bien été modifié.";
+        }
+    }
+    else{
+        return "Veuillez remplir tout les champs.";
+    }
+    exit();
+}
+
 function seeMovieController(){
     $id = $_REQUEST['id'];
     $movie = seeMovie($id);
