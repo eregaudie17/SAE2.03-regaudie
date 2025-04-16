@@ -79,11 +79,11 @@
 
 .Profiles__text{
     position: absolute;
-    display: none;
+    display: flex;
     text-align: center;
     font-size: var(--fs-1);
     font-weight: var(--fw-500);
-    bottom: -35px;
+    bottom: -27px;
     transition: all 0.3s ease-in-out;
 }
 

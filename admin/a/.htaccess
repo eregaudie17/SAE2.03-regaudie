@@ -1,0 +1,4 @@
+AuthName "Acces Restreint"
+AuthType basic
+AuthUserFile /var/www/.htpasswd
+Require valid-user

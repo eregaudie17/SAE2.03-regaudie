@@ -18,6 +18,11 @@ define("DBNAME", "regaudie4");
 define("DBLOGIN", "regaudie4");
 define("DBPWD", "regaudie4");
 
+// define("HOST", "localhost");
+// define("DBNAME", "SAE203");
+// define("DBLOGIN", "usersae203");
+// define("DBPWD", "17.JaN.2005");
+
 
 function getAllMovies(){
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);

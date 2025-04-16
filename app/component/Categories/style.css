@@ -16,4 +16,12 @@
     flex-wrap: wrap;
     justify-content: start;
     align-items: center;
+    scrollbar-color: var(--color-blue) var(--color-dark-blue);
+}
+
+@media screen and (min-width : 50rem){
+    .category__cards{
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
 }

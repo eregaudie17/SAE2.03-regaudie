@@ -4,7 +4,7 @@
         <input required class="addMovie__input" type="text" name="name" placeholder="Titre du film">
         <input required class="addMovie__input" type="number" name="year" placeholder="Année de sortie du film">
         <input required class="addMovie__input" type="number" name="length" placeholder="Durée (en min) du film">
-        <textarea required class="addMovie__input" type="text" name="description" placeholder="Description du film"></textarea>
+        <textarea required class="addMovie__input" name="description" placeholder="Description du film"></textarea>
         <input required class="addMovie__input" type="text" name="director" placeholder="Réalisateur du film">
         <select required class="addMovie__input" name="id_category">
             <option value="">Sélectionnez la catégorie</option>
@@ -22,7 +22,7 @@
         </select>
         <input required class="addMovie__input" type="text" name="image" placeholder="Nom du fichier de l'affiche du film">
         <input required class="addMovie__input" type="url" name="trailer" placeholder="URL du trailer du film">
-        <input required class="addMovie__input" type="number" name="min_age" value="3" placeholder="Restriction d'âge du film" min="3" max="21">
+        <input required class="addMovie__input" type="number" name="min_age" placeholder="Restriction d'âge du film (de 3 à 21 ans)" min="3" max="21">
         <input class="addMovie__button" onclick="{{handler}}" type="button" value="Ajouter" name="todo">
     </form>
 </div>
