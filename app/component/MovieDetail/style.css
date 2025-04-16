@@ -57,12 +57,36 @@
 
 .MovieDetail__info{
     font-size: var(--fs-3);
-    font-weight: var(--fw-5500);
     color: var(--color-gray-light);
 }
 
 .MovieDetail__text{
     margin-block: 0.5rem;
+}
+
+.MovieDetail__button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 10rem;
+    height: 2.5rem;
+    margin-top: 1rem;
+    border-radius: 30px;
+    background-color: var(--color-white);
+    color: var(--color-dark-blue);
+    font-size: var(--fs-2);
+    font-weight: var(--fw-600);
+    border: none;
+}
+
+.MovieDetail__button:hover{
+    cursor: pointer;
+    background-color: var(--color-gray-light);
+}
+
+.MovieDetail__button:active{
+    background-color: var(--color-gray);
 }
 
 .MovieDetail__trailercont{
@@ -91,6 +115,6 @@
     .MovieDetail__trailercont{
         width: 50rem;
         height: 28.125rem;
-        margin-top: 5rem;
+        margin-top: 3rem;
     }
   }

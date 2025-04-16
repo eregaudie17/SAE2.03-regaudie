@@ -16,7 +16,7 @@
     flex-wrap: wrap;
     justify-content: start;
     align-items: center;
-    scrollbar-color: var(--color-blue) var(--color-dark-blue);
+    scrollbar-color: var(--color-dark-blue) var(--color-darker-blue);
 }
 
 @media screen and (min-width : 50rem){

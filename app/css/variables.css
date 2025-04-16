@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+@import url('https://db.onlinewebfonts.com/c/d6ae884b0a2f1a5346717fc160db2d28?family=Roobert');
 
 :root {
   /* Primitive Tokens */
@@ -9,12 +8,14 @@
   --color-gray: hsl(0, 0%, 50%);
   --color-gray-dark: hsl(0, 0%, 20%);
 
-  --color-dark-blue: hsl(252, 67%, 15%);
-  --color-blue: hsl(252, 65%, 24%);
+  --color-darker-blue: #020b26;
+  --color-dark-blue: #001039;
+  --color-gray-blue: #232E50;
+
+  --color-red: #FF4942;
 
 
-  --ff-sans: "DM sans", sans-serif;
-  --ff-nunito: "Nunito", sans-serif;
+  --ff-roobert: "Roobert", sans-serif;
 
   --fs-1: 1rem;
   --fs-2: 1.5rem;
@@ -23,10 +24,11 @@
   --fs-5: 3rem;
   --fs-6: 1.25rem;
 
+  --fw-400: 400;
   --fw-500: 500;
   --fw-600: 600;
 
   /* Sementic Tokens */
   --color-text: var(--color-white);
-  --color-bg: var(--color-black);
+  --color-bg: var(--color-darker-blue);
 }

@@ -48,7 +48,7 @@
       C.getNav = async function (selectedId) {
         let data = await DataProfile.request("");
         let age = await DataProfile.request(selectedId);
-        V.renderNavBar("../server/images/assets/Logo AraWatch.png", `C.handlerHome(${selectedId}, ${age[0].min_age})`, data, selectedId);
+        V.renderNavBar("../server/images/assets/vrtmax.png", `C.handlerHome(${selectedId}, ${age[0].min_age})`, data, selectedId);
       }
 
       C.getPage = function(userId, userMin_Age) {
